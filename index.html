@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#4338ca" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="description" content="Cổng ôn tập tương tác môn Ký sinh trùng (Ký sinh học đại cương, Bệnh động vật ký sinh) Tuyển sinh Sau đại học – Cao học Khoa học Y sinh ĐH Y Dược TP.HCM (YDS) 2026." />
+  <title>Ôn Tập Ký Sinh Trùng Y Học SĐH 2026 - ĐH Y Dược TP.HCM (YDS)</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%234338ca'/%3E%3Ccircle cx='32' cy='32' r='19' fill='none' stroke='%23ffffff' stroke-width='3.5' stroke-dasharray='6 3'/%3E%3Cpath d='M21 36c3-9 10-14 17-12 5 1 8 7 5 12-4 6-14 8-20 4' fill='none' stroke='%2334d399' stroke-width='4.5' stroke-linecap='round'/%3E%3Ccircle cx='39' cy='27' r='2.8' fill='%23ffffff'/%3E%3Ccircle cx='24' cy='24' r='2.5' fill='%23c7d2fe'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- LỚP PHỦ ĐÓNG DRAWER TRÊN ĐIỆN THOẠI / TABLET -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop" aria-hidden="true"></div>
+
+  <!-- SIDEBAR NAVIGATION -->
+  <aside class="sidebar" id="sidebar" aria-label="Danh mục 8 chuyên đề Ký sinh trùng">
+    <div class="sidebar-header">
+      <div class="sidebar-header-top">
+        <span class="brand-badge">Đề cương SĐH 2026 • KHYS YDS</span>
+        <button class="sidebar-close-btn" id="sidebarCloseBtn" type="button" aria-label="Đóng danh mục">✕</button>
+      </div>
+      <div class="sidebar-title">KÝ SINH TRÙNG Y HỌC</div>
+      <div class="sidebar-subtitle">2 Chuyên đề Đề cương (8 Bài) • Hình động sách giáo khoa • 192 Câu KSA</div>
+    </div>
+
+    <div class="overall-progress-box">
+      <div class="progress-label-row">
+        <span>Tiến độ trên thiết bị này</span>
+        <strong id="overallProgressText">0 / 8 bài (0%)</strong>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="overallProgressFill"></div>
+      </div>
+      <div class="storage-note" id="storageStatusNote">💾 Lưu tạm trên trình duyệt thiết bị này (không đồng bộ)</div>
+    </div>
+
+    <div class="sidebar-search">
+      <input type="search" id="lessonSearchInput" placeholder="🔍 Tìm bài học, KST, biểu đồ, xét nghiệm..." autocomplete="off" />
+    </div>
+
+    <nav class="nav-list" id="sidebarNav">
+      <!-- Populated dynamically by app.js -->
+    </nav>
+  </aside>
+
+  <!-- MAIN WRAPPER -->
+  <div class="main-wrapper">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle-btn" id="menuToggleBtn" type="button" title="Mở danh mục 8 bài" aria-label="Mở danh mục bài học">☰ <span class="hide-xs">Danh mục</span></button>
+        <div class="breadcrumb" id="breadcrumb">Tổng quan Đề cương Ký sinh trùng Y học Sau đại học 2026</div>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-outline topbar-btn" id="btnOverview" type="button" onclick="App.showOverview()" title="Về tổng quan 8 bài">
+          <span>📋</span> <span class="hide-sm">Đề cương 8 bài</span><span class="show-sm-only">8 bài</span>
+        </button>
+        <button class="btn btn-accent topbar-btn" id="btnMockExam" type="button" onclick="App.showMockExam()" title="Phòng thi thử tổng hợp">
+          <span>🎯</span> <span>Thi thử</span><span class="hide-sm"> Tổng hợp</span>
+        </button>
+        <button class="btn btn-outline topbar-btn" id="btnThemeToggle" type="button" onclick="App.toggleTheme()" title="Đổi giao diện Sáng/Tối">🌙 <span class="hide-sm">Giao diện tối</span></button>
+      </div>
+    </header>
+
+    <main class="content-container" id="mainContent">
+      <!-- Dynamic view rendered here -->
+    </main>
+  </div>
+
+  <!-- THANH ĐIỀU HƯỚNG NHANH CHO ĐIỆN THOẠI (MOBILE BOTTOM BAR) -->
+  <nav class="mobile-bottom-bar" aria-label="Điều hướng nhanh trên di động">
+    <button type="button" class="mbb-item" onclick="App.openDrawer()">
+      <span class="mbb-icon">☰</span>
+      <span class="mbb-label">8 Bài</span>
+    </button>
+    <button type="button" class="mbb-item" id="mbbOverview" onclick="App.showOverview()">
+      <span class="mbb-icon">📋</span>
+      <span class="mbb-label">Đề cương</span>
+    </button>
+    <button type="button" class="mbb-item" id="mbbMock" onclick="App.showMockExam()">
+      <span class="mbb-icon">🎯</span>
+      <span class="mbb-label">Thi thử</span>
+    </button>
+    <button type="button" class="mbb-item" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+      <span class="mbb-icon">⬆️</span>
+      <span class="mbb-label">Đầu trang</span>
+    </button>
+  </nav>
+
+  <!-- Data & Logic Scripts -->
+  <script src="data_part1.js"></script>
+  <script src="data_part2.js"></script>
+  <script src="questions_extra.js"></script>
+  <script src="animations.js"></script>
+  <script src="simulators.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
